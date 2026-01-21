@@ -13,7 +13,7 @@ create table Shippers (
 create table Vehicle_Details (
     vehicle_id int primary key,
     shipper_id int,
-    license_plate varchar(20) unique,   -- ✅ thêm UNIQUE
+    license_plate varchar(20) unique,   
     vehicle_type enum('Tải', 'Xe máy', 'Container'),
     max_payload int check (max_payload > 0),
     foreign key (shipper_id) references Shippers(shipper_id)
