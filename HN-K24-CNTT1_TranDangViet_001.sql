@@ -114,6 +114,24 @@ from Delivery_Orders d
 join Shippers s on d.shipper_id = s.shipper_id
 join Shipments sh on d.shipment_id = sh.shipment_id;
 
+-- Câu 2:
+select s.full_name,
+       SUM(d.shipping_fee) as total_fee
+from Delivery_Orders d
+join Shippers s on d.shipper_id = s.shipper_id
+group by s.shipper_id
+having SUM(d.shipping_fee) > 3000000;
 
+-- Câu 3:
+select *
+from Shippers
+where rating = (
+    select MAX(rating) from Shippers
+);
+
+-- Phần 4:
+-- Câu 1:
+create index idx_shipment_status_value
+on Shipments(ship_status, product_value);
 
 
